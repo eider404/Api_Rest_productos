@@ -1,4 +1,4 @@
-# Api Rest#
+# Api Rest
 
 ## Introducion:
 Este repositorio es una actividad académica en el cual consiste en el desarrollo de los principios de una API REST, usando los métodos GET,  POST, PUT y DELETE. En este proyecto se usó tecnologías como Node, Express y MySQL.
