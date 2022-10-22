@@ -1,4 +1,4 @@
-CREATE DATABASE Tienda;
+CREATE DATABASE ApiRest;
 USE ApiRest;
 
 
