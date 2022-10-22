@@ -1,9 +1,9 @@
-#Api Rest 
+# Api Rest#
 
-##introducion:
+## Introducion:
 Este repositorio es una actividad académica en el cual consiste en el desarrollo de los principios de una API REST, usando los métodos GET,  POST, PUT y DELETE. En este proyecto se usó tecnologías como Node, Express y MySQL.
 
-##Instalación
+## Instalación
 Para poder empezar a usar el proyecto es nesesario tener instalado NodeJS, MySQL y Postman (o otro tester de APIs).
 Pasos para empezar:
 
@@ -29,12 +29,12 @@ Output:
     Coneccion a ApiRest exitosa 
     example app listening on port 3000
 
-##Funcionamiento:
+## Funcionamiento:
 Utilizando Postman es posible testear la API como se muestra en el siguiente **video**:
 
 [![Watch the video](https://i.blogs.es/ad7836/api/1366_521.jpg)](https://youtu.be/e0UTc1nAqpQ)
 
-###Colaboradores:
+### Colaboradores:
 1. Eider Moises Pool Arjona 
 2. Edilson Yair Hernandez Pech 
 3. Jesus Alberto Pech Pech 
