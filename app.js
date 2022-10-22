@@ -30,7 +30,7 @@ app.use(express.json())
 //app.set('views','./views')
 //app.set('view engine', 'ejs');
 //direcciones
-app.use("/product",routes) 
+app.use("/",routes) 
 
 app.listen(port,()=>{
     console.log(`example app listening on port ${port}`)
