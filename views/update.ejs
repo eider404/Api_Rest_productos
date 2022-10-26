@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%-include ('partials/top') %>
+    <title><%= title %></title>
+</head>
+<body class="container">
+    <%-include ('partials/header') %>
+    <h1>Update product</h1>
+
+    <form method="post">
+        <div class="form-grup">
+            <label for="id">id:</label>
+            <input type="number" name="id" id="id" placeholder="6" class="form-control">
+        </div>
+        <div class="form-grup">  
+            <label for="description">Description:</label>
+            <input type="text" name="description" id="description" placeholder="Coca Cola" class="form-control">
+        </div>
+        <div class="form-grup">
+            <label for="price">Price:</label>
+            <input type="number" name="price" id="price" placeholder="20" class="form-control">
+        </div>
+
+        <div class="form-grup">
+            <label for="count">Count:</label>
+            <input type="number" name="count" id="count" placeholder="3" class="form-control">
+        </div>
+        <br>
+        <div class="form-grup">
+            <input type="submit" value="Actualizar" class="btn btn-primary">
+        </div>
+    </form>
+    
+</body>
+</html>
