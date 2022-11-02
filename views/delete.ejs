@@ -11,16 +11,54 @@
     <%-include ('partials/header') %>
     <h1>Delete product</h1>
 
-    <form method="post">
+    <form id="form_Delete" action="/delete/">
         <div class="form-grup">
             <label for="id">id:</label>
             <input type="number" name="id" id="id" placeholder="6" class="form-control">
         </div>
         <br>
         <div class="form-grup">
-            <input type="submit" value="Eliminar" class="btn btn-primary">
+            <input type="button" value="Eliminar" class="btn btn-primary" onclick="Eliminar()">
         </div>
-    </form>
+    </form><br><br>
+
+
+    <div class="text-center">
+        <div id="Delete">
+        
+        </div>
+    </div>
+
+    <Script>
+
+        function Eliminar(){
+
+            let fmDelete = document.querySelector( '#form_Delete' )
+            //busca el producto a eliminar
+            fetch(`http://localhost:3000/${ fmDelete.id.value }`)
+                .then(res=> res.json())
+                .then(res=>{
+                    if(res[0] == undefined) { throw new Error('¡La id no existe!') }
+
+
+                    fetch( `http://localhost:3000/delete/${ fmDelete.id.value }`, {
+                        method: 'DELETE'
+                    })
+                    .then( raw =>{
+                        document.querySelector("#Delete").className = "alert alert-success",
+                        document.querySelector('#Delete').innerHTML = "Eliminaste: "+JSON.stringify(res[0])
+                    })
+                    .catch( err => console.log( err ))
+
+                })
+                .catch(err=>{
+                    document.querySelector("#Delete").className = "alert alert-danger"
+                    document.querySelector('#Delete').innerHTML = err
+                })
+
+        }
+
+    </Script>
     
 </body>
 </html>

@@ -1,4 +1,6 @@
 const express = require("express");
+const cors = require('cors');
+
 const app = express();
 const port= 3000;
 //impotar rutas
@@ -23,6 +25,9 @@ try {
 } catch (error) {
     console.log(error)
 }
+
+//accesos a las origenes
+app.use(cors())
 
 //analiza las solicitudes JSON 
 //app.use(express.json())
