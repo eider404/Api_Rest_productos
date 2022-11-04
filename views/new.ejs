@@ -12,7 +12,7 @@
     <%-include ('partials/header') %>
     <h1>new product</h1>
 
-    <form id="form_post" method="post">
+    <form id="form_post">
         <div class="form-grup">
             <label for="id">id:</label>
             <input type="number" name="id" id="id" placeholder="6" class="form-control">
@@ -34,7 +34,7 @@
         <div class="form-grup">
             <input type="button" value="Agregar" onclick="Agregar()" class="btn btn-primary">
         </div>
-    </form>
+    </form><br><br>
 
 
     <div class="text-center">
@@ -45,29 +45,41 @@
 
 
     <script>
-        /*
+        
         function Agregar(){
             let fm_Post = document.querySelector( '#form_post' )
 
-
-            const obj = {}
-            new FormData( fm_Post ).forEach( ( value, key ) => obj[ key ] = value )
-
             fetch(`http://localhost:3000/${ fm_Post.id.value }`)
-                .then(res => res.json())
-                .then(data =>{
-                    if(data[0] != undefined) { throw new Error('¡La id Ya existe!') }
+                .then(res=> res.json())
+                .then(res=>{ 
+                    if(res[0] != undefined) { throw new Error('¡La id ya existe!') }
 
-                    document.querySelector("#newProduct").className = "alert alert-success";
-                    document.querySelector('#newProduct').innerHTML ="Agregaste: "+JSON.stringify(obj);
+                    const obj = {}
+                    new FormData( fm_Post ).forEach( ( value, key ) => obj[ key ] = value )
+
+                    //consume el put
+                    fetch( `http://localhost:3000/new`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify( obj )
+                    })
+                    .then(res => res.json())
+                    .then( data =>{
+                        document.querySelector("#newProduct").className = "alert alert-success",
+                        document.querySelector("#newProduct").innerHTML ="Agregaste: "+ JSON.stringify(data) 
+
+                    })
+                    .catch( err => console.log( err ))
+                    
+
                 })
-                .catch(err =>{
-                    document.querySelector("#newProduct").className = "alert alert-alert";
-                    document.querySelector('#newProduct').innerHTML =err;
+                .catch(err=>{
+                    document.querySelector("#newProduct").className = "alert alert-danger"
+                    document.querySelector('#newProduct').innerHTML = err
                 })
-
-
-        }*/
+        }
     </script>
    
     
