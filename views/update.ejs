@@ -54,7 +54,7 @@
             document.querySelector("#newProduct").className = " ";
             document.querySelector('#newProduct').innerHTML =" ";
 
-            //mostrar la informacion antigua
+            //hace un get para comprobar si existe esa id
             fetch(`http://localhost:3000/${ fm_put.id.value }`)
                 .then(res=> res.json())
                 .then(res=>{ 

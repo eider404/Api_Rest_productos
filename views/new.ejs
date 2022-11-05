@@ -48,7 +48,7 @@
         
         function Agregar(){
             let fm_Post = document.querySelector( '#form_post' )
-
+            //hace un get para comprobar si existe esa id
             fetch(`http://localhost:3000/${ fm_Post.id.value }`)
                 .then(res=> res.json())
                 .then(res=>{ 
@@ -57,7 +57,7 @@
                     const obj = {}
                     new FormData( fm_Post ).forEach( ( value, key ) => obj[ key ] = value )
 
-                    //consume el put
+                    //consume el post
                     fetch( `http://localhost:3000/new`, {
                         method: 'POST',
                         headers: {

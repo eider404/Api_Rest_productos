@@ -1,7 +1,46 @@
-<h1>
-    <a href="/">API</a>
-    <a href="/new" class="btn btn-primary pull-right">New</a>
-    <a href="/update" class="btn btn-primary pull-right">Update</a>
-    <a href="/delete" class="btn btn-primary pull-right">Delete</a>
-</h1>
-<hr>
+<div class="navbar row" style="background-color: #e3f2fd;">
+
+    <h1 class="col">
+        <a href="/">API</a>
+        <a href="/new" class="btn btn-primary pull-right">New</a>
+        <a href="/update" class="btn btn-primary pull-right">Update</a>
+        <a href="/delete" class="btn btn-primary pull-right">Delete</a>
+    </h1>
+
+    <div class="col">
+        <div class="container-fluid">
+            <form id="search" class="d-flex" role="search">
+              <input id ="searchId" class="form-control me-2" placeholder="example: 5" aria-label="Search">
+              <button class="btn btn-outline-primary" type="button" onclick="Search()" style="width: 200px;">Search ID</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+<br>
+<div class="text-center">
+    <div id="busqueda"></div>
+</div>
+
+    
+
+<script>
+    function Search(){
+        let search = document.querySelector("#search");
+
+        fetch(`http://localhost:3000/${ search.searchId.value }`)
+            .then(res => res.json())
+            .then(res =>{
+
+                if(res[0] == undefined) { throw new Error('¡La id no existe!') }
+
+                document.querySelector("#busqueda").className = "alert alert-primary";
+                document.querySelector('#busqueda').innerHTML = JSON.stringify(res[0])
+            })
+            .catch(err => {
+                document.querySelector("#busqueda").className = "alert alert-danger";
+                document.querySelector('#busqueda').innerHTML = err
+            })
+    }
+</script>

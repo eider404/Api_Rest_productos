@@ -34,13 +34,13 @@
         function Eliminar(){
 
             let fmDelete = document.querySelector( '#form_Delete' )
-            //busca el producto a eliminar
+            //hace un get para comprobar si existe esa id
             fetch(`http://localhost:3000/${ fmDelete.id.value }`)
                 .then(res=> res.json())
                 .then(res=>{
                     if(res[0] == undefined) { throw new Error('¡La id no existe!') }
 
-
+                    //consume el delete
                     fetch( `http://localhost:3000/delete/${ fmDelete.id.value }`, {
                         method: 'DELETE'
                     })
