@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%-include ('partials/top') %>
+    <title><%= title %></title>
+</head>
+<body class="container">
+</div>
+    <%-include ('partials/header') %>
+    <h1>new product</h1>
+
+    <form id="form_post">
+        <div class="form-grup">
+            <label for="id">id:</label>
+            <input type="number" name="id" id="id" placeholder="6" class="form-control">
+        </div>
+        <div class="form-grup">  
+            <label for="description">Description:</label>
+            <input type="text" name="description" id="description" placeholder="Coca Cola" class="form-control">
+        </div>
+        <div class="form-grup">
+            <label for="price">Price:</label>
+            <input type="number" name="price" id="price" placeholder="20" class="form-control">
+        </div>
+
+        <div class="form-grup">
+            <label for="count">Count:</label>
+            <input type="number" name="count" id="count" placeholder="3" class="form-control">
+        </div>
+        <br>
+        <div class="form-grup">
+            <input type="button" value="Agregar" onclick="Agregar()" class="btn btn-primary">
+        </div>
+    </form><br><br>
+
+
+    <div class="text-center">
+        <div  id="newProduct">
+    
+        </div>
+    </div>
+
+
+    <script>
+        
+        function Agregar(){
+            let fm_Post = document.querySelector( '#form_post' )
+            //hace un get para comprobar si existe esa id
+            fetch(`http://localhost:3000/${ fm_Post.id.value }`)
+                .then(res=> res.json())
+                .then(res=>{ 
+                    if(res[0] != undefined) { throw new Error('¡La id ya existe!') }
+
+                    const obj = {}
+                    new FormData( fm_Post ).forEach( ( value, key ) => obj[ key ] = value )
+
+                    //consume el post
+                    fetch( `http://localhost:3000/new`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify( obj )
+                    })
+                    .then(res => res.json())
+                    .then( data =>{
+                        document.querySelector("#newProduct").className = "alert alert-success",
+                        document.querySelector("#newProduct").innerHTML ="Agregaste: "+ JSON.stringify(data) 
+
+                    })
+                    .catch( err => console.log( err ))
+                    
+
+                })
+                .catch(err=>{
+                    document.querySelector("#newProduct").className = "alert alert-danger"
+                    document.querySelector('#newProduct').innerHTML = err
+                })
+        }
+    </script>
+   
+    
+</body>
+</html>

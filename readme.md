@@ -1,11 +1,12 @@
 #Api Rest 
 
 ##introducion:
-Este repositorio es una actividad académica en el cual consiste en el desarrollo de los principios de una API REST, usando los métodos GET,  POST, PUT y DELETE. En este proyecto se usó tecnologías como Node, Express y MySQL.
+Este repositorio es un proyecto en el cual consiste en el desarrollo de los principios básicos de una API REST, usando los métodos GET,  POST, PUT y DELETE. En este proyecto se usó tecnologías como Node, Express y MySQL.
 
 ##Instalación
-Para poder empezar a usar el proyecto es nesesario tener instalado NodeJS, MySQL y Postman (o otro tester de APIs).
-Pasos para empezar:
+Para poder empezar a usar el proyecto es nesesario tener instalado NodeJS y un servidor MySQL.
+
+####Pasos para empezar:
 
 1.Crear la DB en tu servidor MySQL, usa el archivo [Tienda.sql](https://github.com/eider404/Api_Rest/blob/main/Tienda.sql "Tienda.sql") para crearlo.
 
@@ -20,7 +21,7 @@ Pasos para empezar:
     
     }
 
-3.Utiliza el siguiente comando para correr la API.
+3.Utiliza el siguiente comando para encender el servidor de la API.
 
     node app.js
 
@@ -32,11 +33,4 @@ Output:
 ##Funcionamiento:
 Utilizando Postman es posible testear la API como se muestra en el siguiente **video**:
 
-[![Watch the video](https://i.blogs.es/ad7836/api/1366_521.jpg)](https://youtu.be/e0UTc1nAqpQ)
-
-###Colaboradores:
-1. Eider Moises Pool Arjona 
-2. Edilson Yair Hernandez Pech 
-3. Jesus Alberto Pech Pech 
-4. Rowan Abisai Ojeda Kumul 
-5. Juan de Dios Criollo Kantun
+[![Watch the video](https://i.ibb.co/kM3x7JY/Captura-desde-2022-11-04-23-03-49.png)](https://www.youtube.com/watch?v=hgP67jsol1M)

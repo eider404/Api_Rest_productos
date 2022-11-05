@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%-include ('partials/top') %>
+    <title><%= title %></title>
+</head>
+<body class="container">
+    <%-include ('partials/header') %>
+    <h1>Delete product</h1>
+
+    <form id="form_Delete" action="/delete/">
+        <div class="form-grup">
+            <label for="id">id:</label>
+            <input type="number" name="id" id="id" placeholder="6" class="form-control">
+        </div>
+        <br>
+        <div class="form-grup">
+            <input type="button" value="Eliminar" class="btn btn-primary" onclick="Eliminar()">
+        </div>
+    </form><br><br>
+
+
+    <div class="text-center">
+        <div id="Delete">
+        
+        </div>
+    </div>
+
+    <Script>
+
+        function Eliminar(){
+
+            let fmDelete = document.querySelector( '#form_Delete' )
+            //hace un get para comprobar si existe esa id
+            fetch(`http://localhost:3000/${ fmDelete.id.value }`)
+                .then(res=> res.json())
+                .then(res=>{
+                    if(res[0] == undefined) { throw new Error('¡La id no existe!') }
+
+                    //consume el delete
+                    fetch( `http://localhost:3000/delete/${ fmDelete.id.value }`, {
+                        method: 'DELETE'
+                    })
+                    .then( raw =>{
+                        document.querySelector("#Delete").className = "alert alert-success",
+                        document.querySelector('#Delete').innerHTML = "Eliminaste: "+JSON.stringify(res[0])
+                    })
+                    .catch( err => console.log( err ))
+
+                })
+                .catch(err=>{
+                    document.querySelector("#Delete").className = "alert alert-danger"
+                    document.querySelector('#Delete').innerHTML = err
+                })
+
+        }
+
+    </Script>
+    
+</body>
+</html>
