@@ -11,21 +11,9 @@ routes.get('/',(req, res)=>{
         
         conn.query("SELECT * FROM Product", (err, rows)=>{
             if(err) { return res.send(err) }
-            //res.render('index',{rows});
-            //res.json(rows); 
-            res.render('index',{rows})
+            res.json(rows);
         })   
     })
-})
-
-routes.get('/new',(req,res)=>{
-    res.render('new',{title: 'Nueva entrada'})
-})
-routes.get('/update',(req,res)=>{
-    res.render('update',{title: 'actualizar entrada'})
-})
-routes.get('/delete',(req,res)=>{
-    res.render('delete',{title: 'eliminar entrada'})
 })
 
 

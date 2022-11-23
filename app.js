@@ -1,22 +1,28 @@
 const express = require("express");
 const cors = require('cors');
-
 const app = express();
-const port= 3000;
+//port listening
+const PORT = process.env.PORT || 3000
 //impotar rutas
 const routes = require("./routes")
 
 const bodyParcer = require('body-parser');
 
-//coneccion a la DB
+//Database
+const DB_HOST = process.env.DB_HOST || 'localhost'
+const DB_USER = process.env.DB_USER || 'root'
+const DB_PASSWORD = process.env.DB_PASSWORD || ''
+const DB_NAME = process.env.DB_NAME || 'ApiRest'
+const DB_PORT = process.env.DB_PORT || 3306
+
 const mysql = require('mysql');
 const myconnection = require("express-myconnection");
 const dbOptions = {
-    host: "127.0.0.1",
-    port: 3306,
-    user: "root",
-    password: "",
-    database: "ApiRest"
+    host: DB_HOST,
+    port: DB_PORT,
+    user: DB_USER,
+    password: DB_PASSWORD,
+    database: DB_NAME
 
 }
 try {
@@ -26,21 +32,18 @@ try {
     console.log(error)
 }
 
+
 //accesos a las origenes
 app.use(cors())
 
 //analiza las solicitudes JSON 
-//app.use(express.json())
 app.use(bodyParcer.json());
 app.use(bodyParcer.urlencoded({extended:false}));
 
-//set the view engine to ejs
-app.set('views','./views')
-app.set('view engine', 'ejs');
 
 //direcciones
 app.use("/",routes) 
 
-app.listen(port,()=>{
-    console.log(`example app listening on port ${port}`)
+app.listen(PORT,()=>{
+    console.log(`App listening on port ${PORT}`)
 })
