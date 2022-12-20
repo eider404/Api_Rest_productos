@@ -1,5 +1,5 @@
 # Api Rest  
-💥[**Link de la API**](https://products-api.fly.dev/ "**Link de la API**")💥
+💥[**Link de la API**](https://productos-api.fly.dev/ "**Link de la API**")💥
 
 ## ✅ introducion:
 Este repositorio es un proyecto en el cual consiste en el desarrollo de los principios básicos de una API REST, usando los métodos GET,  POST, PUT y DELETE. En este proyecto se usó tecnologías como Node, Express y MySQL.
@@ -8,10 +8,10 @@ Este repositorio es un proyecto en el cual consiste en el desarrollo de los prin
 En este repositorio existe un ejemplo en el cual muestra como consumir esta API, ver en el directorio [consumoAPI](https://github.com/eider404/Api_Rest/tree/main/consumoAPI "consumoAPI")
 
 **GET:**
-- Genera todos los registros:  https://products-api.fly.dev/
-- Genera un registro con un id específico: https://products-api.fly.dev/4
+- Genera todos los registros:  https://productos-api.fly.dev/
+- Genera un registro con un id específico: https://productos-api.fly.dev/4
 
-**POST:** https://products-api.fly.dev/new
+**POST:** https://productos-api.fly.dev/new
 - body: 
 ```javascript
  {
@@ -22,7 +22,7 @@ En este repositorio existe un ejemplo en el cual muestra como consumir esta API,
  }
 ```
 
-**PUT:** https://products-api.fly.dev/update/5
+**PUT:** https://productos-api.fly.dev/update/5
 - id: debe ser un id existente, *ejemplo: 5*
 - body: 
 ```javascript
@@ -33,7 +33,7 @@ En este repositorio existe un ejemplo en el cual muestra como consumir esta API,
  }
 ```
 
-**DELETE:** https://products-api.fly.dev/delete/5
+**DELETE:** https://productos-api.fly.dev/delete/5
 - id: debe ser un id existente, *ejemplo: 5*
 
 ### ✨ Funcionamiento:
